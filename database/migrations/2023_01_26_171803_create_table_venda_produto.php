@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVendaTable extends Migration
+class CreateTableVendaProduto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateVendaTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendas', function (Blueprint $table) {
+        Schema::create('venda_produto', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venda_id')->constrained('venda');
+            $table->foreignId('produto_id')->constrained('produtos');
+            $table->integer('amount');
+            $table->integer('sale_price');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateVendaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('venda');
+        Schema::dropIfExists('table_venda_produto');
     }
 }
