@@ -15,12 +15,17 @@
         </div>
     </div>
 
+
     <div class="mt-4">
         <livewire:produtos.create/>
     </div>
 
     <div class="mt-4">
         <livewire:produtos.show/>
+    </div>
+
+    <div class="mt-4">
+        <h1> Cadastro de vendas</h1>
     </div>
 
 @endsection

@@ -15,7 +15,7 @@ class CreateTableVendaProduto extends Migration
     {
         Schema::create('venda_produto', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('venda_id')->constrained('venda');
+            $table->foreignId('venda_id')->constrained('vendas');
             $table->foreignId('produto_id')->constrained('produtos');
             $table->integer('amount');
             $table->integer('sale_price');
@@ -30,6 +30,6 @@ class CreateTableVendaProduto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_venda_produto');
+        Schema::dropIfExists('venda_produto');
     }
 }
