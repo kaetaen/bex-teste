@@ -15,8 +15,8 @@ class CreateTableVendaProduto extends Migration
     {
         Schema::create('venda_produto', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('venda_id')->constrained('vendas');
-            $table->foreignId('produto_id')->constrained('produtos');
+            $table->foreignId('venda_id')->constrained('vendas')->onDelete('cascade');
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade');
             $table->integer('amount');
             $table->integer('sale_price');
             $table->timestamps();

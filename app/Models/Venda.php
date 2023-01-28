@@ -14,6 +14,6 @@ class Venda extends Model
     protected $table = 'vendas';
 
     public function produtos() {
-        return $this->belongsToMany(Produto::class, 'venda_produto', 'venda_id', 'produto_id');
+        return $this->belongsToMany(Produto::class, 'venda_produto', 'venda_id', 'produto_id')->withPivot(['amount', 'sale_price']);
     }
 }

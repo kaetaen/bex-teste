@@ -16,6 +16,6 @@ class Produto extends Model
     protected $fillable = ['id','name','price','description'];
 
     public function vendas() {
-        return $this->belongsToMany(Venda::class, 'venda_produto', 'produto_id', 'venda_id');
+        return $this->belongsToMany(Venda::class, 'venda_produto', 'produto_id', 'venda_id')->onDelete('cascade');
     }
 }

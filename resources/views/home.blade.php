@@ -28,4 +28,8 @@
         <livewire:vendas.create/>
     </div>
 
+    <div class="mt-4">
+        <livewire:vendas.show/>
+    </div>
+
 @endsection

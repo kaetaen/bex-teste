@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Produtos;
+namespace App\Http\Livewire\Vendas;
 
 use App\Models\Produto;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Traits\Actions;
+use App\Models\Venda;
 
 class Show extends Component
 {
@@ -16,8 +17,8 @@ class Show extends Component
 
     #escuta todos eventos emitidos e toma uma ação
     protected $listeners=[
-        'Produto::create'=>'$refresh',
-        'Produto::delete'=>'$refresh'
+        'Venda::create'=>'$refresh',
+        'Venda::delete'=>'$refresh'
     ];
        # reseta a paginação
     public function updatingSearch()
@@ -27,41 +28,45 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.produtos.show', [
-            'produtos'=> \App\Models\Produto::orderBy('id','DESC')
-                ->when($this->search, fn($q)=> $q->where('name','like' ,'%'.$this->search.'%') )
-                ->paginate('10')
+        return view('livewire.vendas.show', [
+            'vendas'=>  \App\Models\Venda::with(['produtos'])
+                            ->whereHas('produtos', function ($query) { 
+                                $query->where('name', 'like', '%'.$this->search.'%'); 
+                            })->get()
+
         ]);
     }
 
-    public function message(Produto $produto )
+    public function message($idSail)
     {
+        
         $this->dialog()->confirm([
-            'title'       => 'Ola, você esta preste a deletar o produdo '.strtoupper($produto->name),
+            'title'       => 'Ola, você esta preste a deletar esta venda?',
             'description' => 'Deseja continuar?',
             'icon'        => 'question',
             'accept'      => [
                 'label'  => 'Sim, deletar',
                 'method' => 'delete',
-                'params' => $produto,
+                'params' => $idSail,
             ],
             'reject' => [
                 'label'  => 'No, cancel',
                 'method' => 'render',
             ],
         ]);
+        
     }
 
-    public function delete($produto)
+    public function delete($idSail)
     {
-            Produto::where('id', $produto)->delete();
+        Venda::where('id', $idSail)->delete();
         $this->notification()->notify([
             'title'       => 'Sucesso!',
-            'description' => 'Seu produto foi deletado',
+            'description' => 'Sua venda foi deletada',
             'icon'        => 'success',
-            'timeout'     =>    1000
+            'timeout'     => 1000
         ]);
 
-                $this->emit('Produto::delete');
+        $this->emit('Venda::delete');
     }
 }

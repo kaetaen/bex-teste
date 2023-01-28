@@ -56,10 +56,13 @@ class Create extends Component
         
         $this->notification()->notify([
             'title'       => 'Sucesso!',
-            'description' => 'Seu Produto foi salvo com sucesso',
+            'description' => 'Sua Venda foi salvo com sucesso',
             'icon'        => 'success',
             'timeout'     =>    2000
         ]);
+
+        // Emite um evento de create para a Venda
+        $this->emit('Venda::create');
 
         $this->clean();
     }
