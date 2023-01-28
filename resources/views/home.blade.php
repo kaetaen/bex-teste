@@ -25,7 +25,7 @@
     </div>
 
     <div class="mt-4">
-        <h1> Cadastro de vendas</h1>
+        <livewire:vendas.create/>
     </div>
 
 @endsection

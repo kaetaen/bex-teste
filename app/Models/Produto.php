@@ -13,7 +13,7 @@ class Produto extends Model
 
     protected $table = 'produtos';
 
-    protected $fillable = ['name','price','description'];
+    protected $fillable = ['id','name','price','description'];
 
     public function vendas() {
         return $this->belongsToMany(Venda::class, 'venda_produto', 'produto_id', 'venda_id');

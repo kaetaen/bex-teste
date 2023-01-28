@@ -21,9 +21,6 @@
 
                 </div>
 
-
-
-
             </x-slot>
 
         </x-card>

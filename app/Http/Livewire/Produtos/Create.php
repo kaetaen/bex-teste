@@ -16,9 +16,6 @@ class Create extends Component
     protected $rules=[
         'name'=>['required','min:6'],
         'price'=>['required', 'min:0', 'max:7'],
-
-
-
     ];
     public function render()
     {
@@ -45,7 +42,6 @@ class Create extends Component
             'description' => 'Seu Produto foi salvo com sucesso',
             'icon'        => 'success',
             'timeout'     =>    2000
-
         ]);
 
         #emite um evento de crate do produto
