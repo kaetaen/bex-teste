@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Produtos;
 
 use App\Models\Produto;
+use App\Models\Venda;
+use App\Models\VendaProduto;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Traits\Actions;
@@ -54,7 +56,15 @@ class Show extends Component
 
     public function delete($produto)
     {
-            Produto::where('id', $produto)->delete();
+        $idVenda = VendaProduto::where('produto_id', $produto)->first()->venda_id;
+
+        // Deleta o produto
+        Produto::where('id', $produto)->delete();
+        // Deleta venda vinculada ao produto
+        Venda::where('id', $idVenda)->delete();
+
+        
+
         $this->notification()->notify([
             'title'       => 'Sucesso!',
             'description' => 'Seu produto foi deletado',
@@ -62,6 +72,6 @@ class Show extends Component
             'timeout'     =>    1000
         ]);
 
-                $this->emit('Produto::delete');
+        $this->emit('Produto::delete');
     }
 }

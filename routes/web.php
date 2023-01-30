@@ -10,9 +10,8 @@ use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\{
     Indicador\Indicador,
-    Playground
-
-
+    Playground,
+    Relatorios\Relatorios
 };
 use Illuminate\Support\Facades\Route;
 
@@ -71,5 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/indicador', Indicador::class)->name('indicador');
 
     Route::get('/playground', Playground::class)->name('playground');
+
+    Route::get('/relatorios', Relatorios::class)->name('relatorios');
+
 });
 

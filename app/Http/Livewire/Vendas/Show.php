@@ -18,9 +18,10 @@ class Show extends Component
     #escuta todos eventos emitidos e toma uma ação
     protected $listeners=[
         'Venda::create'=>'$refresh',
-        'Venda::delete'=>'$refresh'
+        'Venda::delete'=>'$refresh',
+        'Produto::delete' => '$refresh'
     ];
-       # reseta a paginação
+    # reseta a paginação
     public function updatingSearch()
     {
         $this->resetPage();

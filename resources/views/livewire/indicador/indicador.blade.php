@@ -34,8 +34,47 @@
                 <p class="font-bold-500 text-xl">{{ $produtoMaisCaro ? json_decode($produtoMaisCaro)->name.' R$ '.json_decode($produtoMaisCaro)->price : 'Não existe produto'}} </p>
                 <p class="">Produto Mais Caro</p>
             </div>
-        </div>
 
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+
+            <p class="font-bold-500 text-xl">{{ $produtoMaisBarato ? json_decode($produtoMaisBarato)->name.' R$ '.json_decode($produtoMaisBarato)->price : 'Não existe produto'}} </p>
+                <p class="">Produto Mais Barato</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+
+                <p class="font-bold-500 text-xl">R$ {{ $vendaMaiorFaturamento }}</p>
+                <p class="">Venda com maior faturamento</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+
+                <p class="font-bold-500 text-xl">{{ $produtoMaisVendido }}</p>
+                <p class="">Produto mais vendido</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+
+                <p class="font-bold-500 text-xl">{{ $produtoMenosVendido }}</p>
+                <p class="">Produto menos vendido</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+
+                <p class="font-bold-500 text-xl">{{ $ticketMedio }}</p>
+                <p class="">Ticket Médio de Vendas</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+                <p class="font-bold-500 text-xl">{{ $transacoesRealizadas }}</p>
+                <p class="">Transações realizadas</p>
+            </div>
+
+            <div class=" bg-white p-3 border shadow-md shadow-red rounded-md">
+                <p class="font-bold-500 text-xl">{{ $totalProdutosVendidos }}</p>
+                <p class="">Total de produtos vendidos</p>
+            </div>
+        </div>
 
     </x-card>
 </div>

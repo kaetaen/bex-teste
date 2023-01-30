@@ -56,6 +56,10 @@
                        href="{{route('indicador')}}">Indicadores</a>
                 </li>
                 <li class="mr-6">
+                    <a class="@if(Route::currentRouteName() == 'relatorios')text-blue-500 hover:text-blue-800 @endif text-gray-500 focus:border-gray-800 hover:text-gray-800"
+                       href="{{route('relatorios')}}">Relatórios</a>
+                </li>
+                <li class="mr-6">
                     <a class="@if(Route::currentRouteName() == 'playground')text-blue-500 hover:text-blue-800 @endif text-gray-500 focus:border-gray-800 hover:text-gray-800"
                        href="{{route('playground')}}">O DESAFIO @if(Route::currentRouteName() != 'playground')
                             😱@else🤞😄🤞 @endif</a>
